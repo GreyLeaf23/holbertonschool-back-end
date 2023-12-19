@@ -8,7 +8,6 @@ import requests
 import sys
 
 
-
 def export_all_to_json():
     user_response = requests.get('https://jsonplaceholder.typicode.com/users')
     users_data = user_response.json()
