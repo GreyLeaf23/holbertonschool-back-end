@@ -41,8 +41,6 @@ def get_employee_todo_progress(employee_id):
 # Task 1: Export to CSV
     with open('{}.csv'.format(employee_id), 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        writer.writerow(["USER_ID", "USERNAME",
-                         "TASK_COMPLETED_STATUS", "TASK_TITLE"])
         for task in todo_data:
             writer.writerow([employee_id, employee_name,
                              task['completed'], task['title']])
