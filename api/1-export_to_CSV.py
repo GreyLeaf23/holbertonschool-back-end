@@ -39,6 +39,23 @@ def get_employee_todo_progress(employee_id):
 
 
 # Task 1: Export to CSV
+def export_to_csv(employee_id):
+    """
+    Exports the user's tasks to a CSV file.
+    """
+    # Get the user name through the API
+    user_response = requests.get(
+        'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id))
+    user_data = user_response.json()  # Parse user names to JSON
+    employee_name = user_data['name']
+
+
+#  Get the user's tasks through the API
+    todo_response = requests.get(
+        'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
+            employee_id))
+    todo_data = todo_response.json()  # Parse user's tasks to JSON
+
     with open('{}.csv'.format(employee_id), 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todo_data:
@@ -50,3 +67,4 @@ def get_employee_todo_progress(employee_id):
 if __name__ == '__main__':
     employee_id = int(sys.argv[1])
     get_employee_todo_progress(employee_id)
+    export_to_csv(employee_id)
