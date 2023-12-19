@@ -39,7 +39,7 @@ def get_employee_todo_progress(employee_id):
 
 
 # Task 1: Export to CSV
-    with open('{}.csv'.format(employee_id), 'w') as csvfile:
+    with open('USER_ID.csv', 'w') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todo_data:
             writer.writerow([employee_id, employee_name,
